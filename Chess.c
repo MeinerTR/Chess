@@ -6,8 +6,8 @@
 #define C char
 #define V void
 #define B bool
-#define T true
-#define F false
+#define YES true
+#define NO false
 
 #define CO const
 #define U unsigned
@@ -47,8 +47,13 @@ typedef enum {
     WHITE
 } TEAM;
 
+#ifdef _WIN32
+    #define CLEAR system("cls");
+#else
+    #define CLEAR system("clear");
+#endif
 #define Escape(A, B) Table[A] = Table[B]; Table[B] = 0;
-#define UpdateTable system("clear"); PrintTable();
+#define UpdateTable CLEAR PrintTable();
 
 V Reset(TEAM Bottom) {
     if (Bottom == BLACK) {
@@ -133,30 +138,28 @@ V Reset(TEAM Bottom) {
 B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
     UI Y1 = Pikachu[1], Y2 = Pikachu[3],
         X1 = Pikachu[0], X2 = Pikachu[2];
-    if (Y1 < 49 | Y1 > 58) { system("clear");
+    if (Y1 < 49 | Y1 > 58) { 
         printf("Invalid Y coordinate in select!\n");
-        return F;
-    } else if (Y2 < 49 | Y2 > 58) { system("clear");
+        return NO;
+    } else if (Y2 < 49 | Y2 > 58) { 
         printf("Invalid Y coordinate in move!\n");
-        return F;
+        return NO;
     } else {
-        if (X1 < 97 | X1 > 104) { system("clear");
+        if (X1 < 97 | X1 > 104) { 
             printf("Invalid X coordinate in select!\n");
-            return F;
-        } else if (X2 < 97 | X2 > 104) { system("clear");
+            return NO;
+        } else if (X2 < 97 | X2 > 104) { 
             printf("Invalid X coordinate in move!\n");
-            return F;
+            return NO;
         } else {
             Y1 -= 49; Y2 -= 49;
             X1 -= 97; X2 -= 97;
             if (Table[(Y1 * 8) + X1] < 7 & Team == WHITE) {
-                system("clear");
                 printf("WHITE are you colorblind?\n");
-                return F;
+                return NO;
             } else if (Table[(Y1 * 8) + X1] > 6 & Team == BLACK) {
-                system("clear");
                 printf("BLACK are you colorblind?\n");
-                return F;
+                return NO;
             } else {
                 CUI Target = Table[(Y2 * 8) + X2];
                 CUI XL = (X1 - X2), XR = (X2 - X1),
@@ -169,45 +172,45 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                     if (XL == 1 | XR == 1) {
                                         if (Y2 == BOTTOM_PAWN - 1) {
                                             if (Target != 0) {
-                                                if (Target < 7) {
+                                                if (Target < 7 & Target != 0) {
                                                     Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                                    return T;
-                                                } else { system("clear");
+                                                    return YES;
+                                                } else { 
                                                     printf("WHITE pawn is allergic to white things!\n");
-                                                    return F;
+                                                    return NO;
                                                 }
-                                            } else { system("clear");
+                                            } else { 
                                                 printf("WHITE pawn is allergic to nothing!\n");
-                                                return F;
+                                                return NO;
                                             }
-                                        } else { system("clear");
-                                            printf("WHITE pawn has allergic to go far!\n");
-                                            return F;
+                                        } else { 
+                                            printf("WHITE pawn is allergic to go far!\n");
+                                            return NO;
                                         }
-                                    } else { system("clear");
-                                        printf("WHITE pawn has allergic to go far!\n");
-                                        return F;
+                                    } else { 
+                                        printf("WHITE pawn is allergic to go far!\n");
+                                        return NO;
                                     }
                                 } else {
                                     if (Y2 == BOTTOM_PAWN - 1) {
                                         if (Target == 0) {
                                             Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                            return T;
-                                        } else { system("clear");
+                                            return YES;
+                                        } else { 
                                             printf("WHITE pawn wants to stare front of something!\n");
-                                            return F;
+                                            return NO;
                                         }
                                     } else if (Y2 == BOTTOM_PAWN - 2) {
                                         if (Target == 0 & Table[(Y2 * 8) + X2] == 0) {
                                             Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                            return T;
-                                        } else { system("clear");
+                                            return YES;
+                                        } else { 
                                             printf("WHITE pawn wants to stare front of something!\n");
-                                            return F;
+                                            return NO;
                                         }
-                                    } else { system("clear");
+                                    } else { 
                                         printf("WHITE pawn don't want to go far away!\n");
-                                        return F;
+                                        return NO;
                                     }
                                 }
                             } else {
@@ -215,28 +218,28 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                     if (XL == 1 | XR == 1) {
                                         if (YL == 1) {
                                             if (Target != 0) {
-                                                if (Target < 7) {
+                                                if (Target < 7 & Target != 0) {
                                                     if (Y2 == 0) {
                                                         Table[(Y2 * 8) + X2] = WHITE_QUEEN;
                                                         Table[(Y1 * 8) + X1] = 0;
                                                     } else {
                                                         Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                                    } return T;
-                                                } else { system("clear");
+                                                    } return YES;
+                                                } else { 
                                                     printf("WHITE pawn is allergic to white things!\n");
-                                                    return F;
+                                                    return NO;
                                                 }
-                                            } else { system("clear");
+                                            } else { 
                                                 printf("WHITE pawn is allergic to nothing!\n");
-                                                return F;
+                                                return NO;
                                             }
-                                        } else { system("clear");
-                                            printf("WHITE pawn has allergic to go far!\n");
-                                            return F;
+                                        } else { 
+                                            printf("WHITE pawn is allergic to go far!\n");
+                                            return NO;
                                         }
-                                    } else { system("clear");
-                                        printf("WHITE pawn has allergic to go far!\n");
-                                        return F;
+                                    } else { 
+                                        printf("WHITE pawn is allergic to go far!\n");
+                                        return NO;
                                     }
                                 } else {
                                     if (YL == 1) {
@@ -246,14 +249,14 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                                 Table[(Y1 * 8) + X1] = 0;
                                             } else {
                                                 Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                            } return T;
-                                        } else { system("clear");
+                                            } return YES;
+                                        } else { 
                                             printf("WHITE pawn wants to stare front of something!\n");
-                                            return F;
+                                            return NO;
                                         }
-                                    } else { system("clear");
+                                    } else { 
                                         printf("WHITE pawn don't want to go far away!\n");
-                                        return F;
+                                        return NO;
                                     }
                                 }
                             }
@@ -263,45 +266,45 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                     if (XL == 1 | XR == 1) {
                                         if (Y2 == TOP_PAWN + 1) {
                                             if (Target != 0) {
-                                                if (Target < 7) {
+                                                if (Target < 7 & Target != 0) {
                                                     Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                                    return T;
-                                                } else { system("clear");
+                                                    return YES;
+                                                } else { 
                                                     printf("WHITE pawn is allergic to white things!\n");
-                                                    return F;
+                                                    return NO;
                                                 }
-                                            } else { system("clear");
+                                            } else { 
                                                 printf("WHITE pawn is allergic to nothing!\n");
-                                                return F;
+                                                return NO;
                                             }
-                                        } else { system("clear");
+                                        } else { 
                                             printf("WHITE pawn allergic to go far!\n");
-                                            return F;
+                                            return NO;
                                         }
-                                    } else { system("clear");
-                                        printf("WHITE pawn has allergic to go far!\n");
-                                        return F;
+                                    } else { 
+                                        printf("WHITE pawn is allergic to go far!\n");
+                                        return NO;
                                     }
                                 } else {
                                     if (Y2 == TOP_PAWN + 1) {
                                         if (Target == 0) {
                                             Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                            return T;
-                                        } else { system("clear");
+                                            return YES;
+                                        } else { 
                                             printf("WHITE pawn wants to stare front of something!\n");
-                                            return F;
+                                            return NO;
                                         }
                                     } else if (Y2 == TOP_PAWN + 2) {
                                         if (Target == 0 & Table[(Y2 * 8) + X2] == 0) {
                                             Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                            return T;
-                                        } else { system("clear");
+                                            return YES;
+                                        } else { 
                                             printf("WHITE pawn wants to stare front of something!\n");
-                                            return F;
+                                            return NO;
                                         }
-                                    } else { system("clear");
+                                    } else { 
                                         printf("WHITE pawn don't want to go far away!\n");
-                                        return F;
+                                        return NO;
                                     }
                                 } 
                             } else {
@@ -309,25 +312,25 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                     if (XL == 1 | XR == 1) {
                                         if (YR == 1) {
                                             if (Target != 0) {
-                                                if (Target < 7) {
+                                                if (Target < 7 & Target != 0) {
                                                     if (Y2 == 7) {
                                                         Table[(Y2 * 8) + X2] = WHITE_QUEEN;
                                                         Table[(Y1 * 8) + X1] = 0;
                                                     } else {
                                                         Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                                    } return T;
-                                                } else { system("clear");
+                                                    } return YES;
+                                                } else { 
                                                     printf("WHITE pawn is allergic to white things!\n");
-                                                    return F;
+                                                    return NO;
                                                 }
-                                            } else { system("clear");
+                                            } else { 
                                                 printf("WHITE pawn is allergic to nothing!\n");
-                                                return F;
+                                                return NO;
                                             }
                                         }
-                                    } else { system("clear");
-                                        printf("WHITE pawn has allergic to go far!\n");
-                                        return F;
+                                    } else { 
+                                        printf("WHITE pawn is allergic to go far!\n");
+                                        return NO;
                                     }
                                 } else {
                                     if (YR == 1) {
@@ -337,14 +340,14 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                                 Table[(Y1 * 8) + X1] = 0;
                                             } else {
                                                 Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                            } return T;
-                                        } else { system("clear");
+                                            } return YES;
+                                        } else { 
                                             printf("WHITE pawn wants to stare front of something!\n");
-                                            return F;
+                                            return NO;
                                         }
-                                    } else { system("clear");
+                                    } else { 
                                         printf("WHITE pawn don't want to go far away!\n");
-                                        return F;
+                                        return NO;
                                     }
                                 }
                             }
@@ -358,43 +361,43 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                             if (Target != 0) {
                                                 if (Target > 6) {
                                                     Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                                    return T;
-                                                } else { system("clear");
+                                                    return YES;
+                                                } else { 
                                                     printf("BLACK pawn is allergic to black things!\n");
-                                                    return F;
+                                                    return NO;
                                                 }
-                                            } else { system("clear");
+                                            } else { 
                                                 printf("BLACK pawn is allergic to nothing!\n");
-                                                return F;
+                                                return NO;
                                             }
-                                        } else { system("clear");
-                                            printf("BLACK pawn has allergic to go far!\n");
-                                            return F;
+                                        } else { 
+                                            printf("BLACK pawn is allergic to go far!\n");
+                                            return NO;
                                         }
-                                    } else { system("clear");
-                                        printf("BLACK pawn has allergic to go far!\n");
-                                        return F;
+                                    } else { 
+                                        printf("BLACK pawn is allergic to go far!\n");
+                                        return NO;
                                     }
                                 } else {
                                     if (Y2 == BOTTOM_PAWN + 1) {
                                         if (Target == 0) {
                                             Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                            return T;
-                                        } else { system("clear");
+                                            return YES;
+                                        } else { 
                                             printf("BLACK pawn wants to stare front of something!\n");
-                                            return F;
+                                            return NO;
                                         }
                                     } else if (Y2 == BOTTOM_PAWN + 2) {
                                         if (Target == 0 & Table[(Y2 * 8) + X2] == 0) {
                                             Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                            return T;
-                                        } else { system("clear");
+                                            return YES;
+                                        } else { 
                                             printf("BLACK pawn wants to stare front of something!\n");
-                                            return F;
+                                            return NO;
                                         }
-                                    } else { system("clear");
+                                    } else { 
                                         printf("BLACK pawn don't want to go far away!\n");
-                                        return F;
+                                        return NO;
                                     }
                                 }
                             } else {
@@ -408,23 +411,23 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                                         Table[(Y1 * 8) + X1] = 0;
                                                     } else {
                                                         Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                                    } return T;
-                                                    return T;
-                                                } else { system("clear");
+                                                    } return YES;
+                                                    return YES;
+                                                } else { 
                                                     printf("BLACK pawn is allergic to black things!\n");
-                                                    return F;
+                                                    return NO;
                                                 }
-                                            } else { system("clear");
+                                            } else { 
                                                 printf("BLACK pawn is allergic to nothing!\n");
-                                                return F;
+                                                return NO;
                                             }
-                                        } else { system("clear");
-                                            printf("BLACK pawn has allergic to go far!\n");
-                                            return F;
+                                        } else { 
+                                            printf("BLACK pawn is allergic to go far!\n");
+                                            return NO;
                                         }
-                                    } else { system("clear");
-                                        printf("BLACK pawn has allergic to go far!\n");
-                                        return F;
+                                    } else { 
+                                        printf("BLACK pawn is allergic to go far!\n");
+                                        return NO;
                                     }
                                 } else {
                                     if (YL == 1) {
@@ -434,14 +437,14 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                                 Table[(Y1 * 8) + X1] = 0;
                                             } else {
                                                 Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                            } return T;
-                                        } else { system("clear");
+                                            } return YES;
+                                        } else { 
                                             printf("BLACK pawn wants to stare front of something!\n");
-                                            return F;
+                                            return NO;
                                         }
-                                    } else { system("clear");
+                                    } else { 
                                         printf("BLACK pawn don't want to go far away!\n");
-                                        return F;
+                                        return NO;
                                     }
                                 }
                             }
@@ -453,43 +456,43 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                             if (Target != 0) {
                                                 if (Target > 6) {
                                                     Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                                    return T;
-                                                } else { system("clear");
+                                                    return YES;
+                                                } else { 
                                                     printf("BLACK pawn is allergic to black things!\n");
-                                                    return F;
+                                                    return NO;
                                                 }
-                                            } else { system("clear");
+                                            } else { 
                                                 printf("BLACK pawn is allergic to nothing!\n");
-                                                return F;
+                                                return NO;
                                             }
-                                        } else { system("clear");
+                                        } else { 
                                             printf("BLACK pawn allergic to go far!\n");
-                                            return F;
+                                            return NO;
                                         }
-                                    } else { system("clear");
-                                        printf("BLACK pawn has allergic to go far!\n");
-                                        return F;
+                                    } else { 
+                                        printf("BLACK pawn is allergic to go far!\n");
+                                        return NO;
                                     }
                                 } else {
                                     if (Y2 == TOP_PAWN + 1) {
                                         if (Target == 0) {
                                             Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                            return T;
-                                        } else { system("clear");
+                                            return YES;
+                                        } else { 
                                             printf("BLACK pawn wants to stare front of something!\n");
-                                            return F;
+                                            return NO;
                                         }
                                     } else if (Y2 == TOP_PAWN + 2) {
                                         if (Target == 0 & Table[(Y2 * 8) + X2] == 0) {
                                             Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                            return T;
-                                        } else { system("clear");
+                                            return YES;
+                                        } else { 
                                             printf("BLACK pawn wants to stare front of something!\n");
-                                            return F;
+                                            return NO;
                                         }
-                                    } else { system("clear");
+                                    } else { 
                                         printf("BLACK pawn don't want to go far away!\n");
-                                        return F;
+                                        return NO;
                                     }
                                 } 
                             } else {
@@ -503,20 +506,20 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                                         Table[(Y1 * 8) + X1] = 0;
                                                     } else {
                                                         Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                                    } return T;
-                                                    return T;
-                                                } else { system("clear");
+                                                    } return YES;
+                                                    return YES;
+                                                } else { 
                                                     printf("BLACK pawn is allergic to black things!\n");
-                                                    return F;
+                                                    return NO;
                                                 }
-                                            } else { system("clear");
+                                            } else { 
                                                 printf("BLACK pawn is allergic to nothing!\n");
-                                                return F;
+                                                return NO;
                                             }
                                         }
-                                    } else { system("clear");
-                                        printf("BLACK pawn has allergic to go far!\n");
-                                        return F;
+                                    } else { 
+                                        printf("BLACK pawn is allergic to go far!\n");
+                                        return NO;
                                     }
                                 } else {
                                     if (YR == 1) {
@@ -526,30 +529,321 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                                 Table[(Y1 * 8) + X1] = 0;
                                             } else {
                                                 Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                            } return T;
-                                            return T;
-                                        } else { system("clear");
+                                            } return YES;
+                                            return YES;
+                                        } else { 
                                             printf("BLACK pawn wants to stare front of something!\n");
-                                            return F;
+                                            return NO;
                                         }
-                                    } else { system("clear");
+                                    } else { 
                                         printf("BLACK pawn don't want to go far away!\n");
-                                        return F;
+                                        return NO;
                                     }
                                 }
                             }
                         } break;
                     } case (WHITE_KNIGHT): {
-                        if (XL == 1 | XR == 2) {
-
-                        }
+                        if (XL == 1) {
+                            if (YL == 2) {
+                                if (Target == 0) {
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                } else {
+                                    if (Target > 6) { 
+                                        printf("WHITE knight is allergic to white things!\n");
+                                        return NO;
+                                    } else {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    }
+                                }
+                            } else if (YR == 2) {
+                                if (Target == 0) {
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                } else {
+                                    if (Target > 6) { 
+                                        printf("WHITE knight is allergic to white things!\n");
+                                        return NO;
+                                    } else {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    }
+                                }
+                            } else { 
+                                printf("WHITE knight fell from the horse!\n");
+                                return NO;
+                            }
+                        } else if (XL == 2) {
+                            if (YL == 1) {
+                                if (Target == 0) {
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                } else {
+                                    if (Target > 6) { 
+                                        printf("WHITE knight is allergic to white things!\n");
+                                        return NO;
+                                    } else {
+                                        if (Target == 0) {
+                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        } else {
+                                            if (Target > 6) { 
+                                                printf("WHITE knight is allergic to white things!\n");
+                                                return NO;
+                                            } else {
+                                                Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                            }
+                                        }
+                                    }
+                                }
+                            } else if (YR == 2) {
+                                if (Target == 0) {
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                } else {
+                                    if (Target > 6) { 
+                                        printf("WHITE knight is allergic to white things!\n");
+                                        return NO;
+                                    } else {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    }
+                                }
+                            } else { 
+                                printf("WHITE knight fell from the horse!\n");
+                                return NO;
+                            }
+                        } else if (XR == 1) {
+                            if (YL == 2) {
+                                if (Target > 6) { 
+                                    printf("WHITE knight is allergic to white things!\n");
+                                    return NO;
+                                } else {
+                                    if (Target == 0) {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    } else {
+                                        if (Target > 6) { 
+                                            printf("WHITE knight is allergic to white things!\n");
+                                            return NO;
+                                        } else {
+                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        }
+                                    }
+                                }
+                            } else if (YR == 2) {
+                                if (Target > 6) { 
+                                    printf("WHITE knight is allergic to white things!\n");
+                                    return NO;
+                                } else {
+                                    if (Target == 0) {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    } else {
+                                        if (Target > 6) { 
+                                            printf("WHITE knight is allergic to white things!\n");
+                                            return NO;
+                                        } else {
+                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        }
+                                    }
+                                }
+                            } else { 
+                                printf("WHITE knight fell from the horse!\n");
+                                return NO;
+                            }
+                        } else if (XR == 2) {
+                            if (YL == 1) {
+                                if (Target > 6) { 
+                                    printf("WHITE knight is allergic to white things!\n");
+                                    return NO;
+                                } else {
+                                    if (Target == 0) {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    } else {
+                                        if (Target > 6) { 
+                                            printf("WHITE knight is allergic to white things!\n");
+                                            return NO;
+                                        } else {
+                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        }
+                                    }
+                                }
+                            } else if (YR == 1) {
+                                if (Target > 6) { 
+                                    printf("WHITE knight is allergic to white things!\n");
+                                    return NO;
+                                } else {
+                                    if (Target == 0) {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    } else {
+                                        if (Target > 6) { 
+                                            printf("WHITE knight is allergic to white things!\n");
+                                            return NO;
+                                        } else {
+                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        }
+                                    }
+                                }
+                            } else { 
+                                printf("WHITE knight fell from the horse!\n");
+                                return NO;
+                            }
+                        } else { 
+                            printf("WHITE knight fell from the horse!\n");
+                            return NO;
+                        } break;
+                    } case (BLACK_KNIGHT): {
+                        if (XL == 1) {
+                            if (YL == 2) {
+                                if (Target < 7 & Target != 0) { 
+                                    printf("BLACK knight is allergic to black things!\n");
+                                    return NO;
+                                } else {
+                                    if (Target == 0) {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    } else {
+                                        if (Target < 7) { 
+                                            printf("BLACK knight is allergic to black things!\n");
+                                            return NO;
+                                        } else {
+                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        }
+                                    }
+                                }
+                            } else if (YR == 2) {
+                                if (Target < 7 & Target != 0) { 
+                                    printf("BLACK knight is allergic to black things!\n");
+                                    return NO;
+                                } else {
+                                    if (Target == 0) {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    } else {
+                                        if (Target < 7) { 
+                                            printf("BLACK knight is allergic to black things!\n");
+                                            return NO;
+                                        } else {
+                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        }
+                                    }
+                                }
+                            } else { 
+                                printf("BLACK knight fell from the horse!\n");
+                                return NO;
+                            }
+                        } else if (XL == 2) {
+                            if (YL == 1) {
+                                if (Target < 7 & Target != 0) { 
+                                    printf("BLACK knight is allergic to black things!\n");
+                                    return NO;
+                                } else {
+                                    if (Target == 0) {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    } else {
+                                        if (Target < 7) { 
+                                            printf("BLACK knight is allergic to black things!\n");
+                                            return NO;
+                                        } else {
+                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        }
+                                    }
+                                }
+                            } else if (YR == 2) {
+                                if (Target < 7 & Target != 0) { 
+                                    printf("BLACK knight is allergic to black things!\n");
+                                    return NO;
+                                } else {
+                                    if (Target == 0) {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    } else {
+                                        if (Target < 7) { 
+                                            printf("BLACK knight is allergic to black things!\n");
+                                            return NO;
+                                        } else {
+                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        }
+                                    }
+                                }
+                            } else { 
+                                printf("BLACK knight fell from the horse!\n");
+                                return NO;
+                            }
+                        } else if (XR == 1) {
+                            if (YL == 2) {
+                                if (Target < 7 & Target != 0) { 
+                                    printf("BLACK knight is allergic to black things!\n");
+                                    return NO;
+                                } else {
+                                    if (Target == 0) {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    } else {
+                                        if (Target < 7) { 
+                                            printf("BLACK knight is allergic to black things!\n");
+                                            return NO;
+                                        } else {
+                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        }
+                                    }
+                                }
+                            } else if (YR == 2) {
+                                if (Target < 7 & Target != 0) { 
+                                    printf("BLACK knight is allergic to black things!\n");
+                                    return NO;
+                                } else {
+                                    if (Target == 0) {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    } else {
+                                        if (Target < 7) { 
+                                            printf("BLACK knight is allergic to black things!\n");
+                                            return NO;
+                                        } else {
+                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        }
+                                    }
+                                }
+                            } else { 
+                                printf("BLACK knight fell from the horse!\n");
+                                return NO;
+                            }
+                        } else if (XR == 2) {
+                            if (YL == 1) {
+                                if (Target < 7 & Target != 0) { 
+                                    printf("BLACK knight is allergic to black things!\n");
+                                    return NO;
+                                } else {
+                                    if (Target == 0) {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    } else {
+                                        if (Target < 7) { 
+                                            printf("BLACK knight is allergic to black things!\n");
+                                            return NO;
+                                        } else {
+                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        }
+                                    }
+                                }
+                            } else if (YR == 1) {
+                                if (Target < 7 & Target != 0) { 
+                                    printf("BLACK knight is allergic to black things!\n");
+                                    return NO;
+                                } else {
+                                    if (Target == 0) {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    } else {
+                                        if (Target < 7) { 
+                                            printf("BLACK knight is allergic to black things!\n");
+                                            return NO;
+                                        } else {
+                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        }
+                                    }
+                                }
+                            } else { 
+                                printf("BLACK knight fell from the horse!\n");
+                                return NO;
+                            }
+                        } else { 
+                            printf("BLACK knight fell from the horse!\n");
+                            return NO;
+                        } break;
                     } default: {
                         Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                        return T;
+                        return YES;
                     }
                 }
             }
-            return T;
+            return YES;
         }
     }
 }
@@ -610,7 +904,7 @@ I main(V) {
         64, sizeof(UI)
     ); C Answer, _Move[5];
 
-    system("clear");
+    
     TEAM BTeam,
     CurrTeam = WHITE;
 
@@ -618,7 +912,7 @@ I main(V) {
         printf("(P) Play or (Q) Quit?\n");
         scanf("%c", &Answer);
         if (Answer == 'P') {
-            system("clear");
+            CLEAR
             while (1) {
                 printf("What team bottom should be?\n");
                 scanf("%c", &Answer);
@@ -642,9 +936,10 @@ I main(V) {
                 }
 
                 scanf("%s %s", &_Move[0], &_Move[2]);
+                CLEAR
                 B Legal = Move(_Move, CurrTeam, BTeam);
 
-                if (Legal == F) {
+                if (Legal == NO) {
                     PrintTable();
                 } else {
                     UpdateTable
@@ -656,8 +951,7 @@ I main(V) {
                 }
             }
         } else if (Answer == 'Q') {
-            system("clear");
-            break;
+            CLEAR break;
         } else {
              printf("(P) Play or (Q) Quit?\n");
         }
