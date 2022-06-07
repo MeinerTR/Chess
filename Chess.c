@@ -159,13 +159,15 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                 return F;
             } else {
                 CUI Target = Table[(Y2 * 8) + X2];
+                CUI XL = (X1 - X2), XR = (X2 - X1),
+                    YL = (Y1 - Y2), YR = (Y2 - Y1);
                 switch (Table[(Y1 * 8) + X1]) {
                     case (WHITE_PAWN): {
                         if (BTeam == WHITE) {    
                             if (Y1 == BOTTOM_PAWN) {
                                 if (X2 != X1) {
-                                    if ((X1 - X2) == 1 | (X2 - X1) == 1) {
-                                        if (Y1 == BOTTOM_PAWN - 1) {
+                                    if (XL == 1 | XR == 1) {
+                                        if (Y2 == BOTTOM_PAWN - 1) {
                                             if (Target != 0) {
                                                 if (Target < 7) {
                                                     Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
@@ -210,12 +212,16 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                 }
                             } else {
                                 if (X2 != X1) {
-                                    if ((X1 - X2) == 1 | (X2 - X1) == 1) {
-                                        if ((Y1 - Y2) == 1) {
+                                    if (XL == 1 | XR == 1) {
+                                        if (YL == 1) {
                                             if (Target != 0) {
                                                 if (Target < 7) {
-                                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                                    return T;
+                                                    if (Y2 == 0) {
+                                                        Table[(Y2 * 8) + X2] = WHITE_QUEEN;
+                                                        Table[(Y1 * 8) + X1] = 0;
+                                                    } else {
+                                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                                    } return T;
                                                 } else { system("clear");
                                                     printf("WHITE pawn is allergic to white things!\n");
                                                     return F;
@@ -233,10 +239,14 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                         return F;
                                     }
                                 } else {
-                                    if ((Y1 - Y2) == 1) {
+                                    if (YL == 1) {
                                         if (Target == 0) {
-                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                            return T;
+                                            if (Y2 == 0) {
+                                                Table[(Y2 * 8) + X2] = WHITE_QUEEN;
+                                                Table[(Y1 * 8) + X1] = 0;
+                                            } else {
+                                                Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                            } return T;
                                         } else { system("clear");
                                             printf("WHITE pawn wants to stare front of something!\n");
                                             return F;
@@ -250,8 +260,8 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                         } else {
                             if (Y1 == TOP_PAWN) {
                                 if (X2 != X1) {
-                                    if ((X1 - X2) == 1 | (X2 - X1) == 1) {
-                                        if (Y1 == TOP_PAWN + 1) {
+                                    if (XL == 1 | XR == 1) {
+                                        if (Y2 == TOP_PAWN + 1) {
                                             if (Target != 0) {
                                                 if (Target < 7) {
                                                     Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
@@ -296,12 +306,16 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                 } 
                             } else {
                                 if (X2 != X1) {
-                                    if ((X1 - X2) == 1 | (X2 - X1) == 1) {
-                                        if (Y1 == TOP_PAWN + 1) {
+                                    if (XL == 1 | XR == 1) {
+                                        if (YR == 1) {
                                             if (Target != 0) {
                                                 if (Target < 7) {
-                                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                                    return T;
+                                                    if (Y2 == 7) {
+                                                        Table[(Y2 * 8) + X2] = WHITE_QUEEN;
+                                                        Table[(Y1 * 8) + X1] = 0;
+                                                    } else {
+                                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                                    } return T;
                                                 } else { system("clear");
                                                     printf("WHITE pawn is allergic to white things!\n");
                                                     return F;
@@ -316,10 +330,14 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                         return F;
                                     }
                                 } else {
-                                    if (Y2 == TOP_PAWN + 1) {
+                                    if (YR == 1) {
                                         if (Target == 0) {
-                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                            return T;
+                                            if (Y2 == 7) {
+                                                Table[(Y2 * 8) + X2] = WHITE_QUEEN;
+                                                Table[(Y1 * 8) + X1] = 0;
+                                            } else {
+                                                Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                            } return T;
                                         } else { system("clear");
                                             printf("WHITE pawn wants to stare front of something!\n");
                                             return F;
@@ -335,8 +353,8 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                         if (BTeam == BLACK) {    
                             if (Y1 == BOTTOM_PAWN) {
                                 if (X2 != X1) {
-                                    if ((X1 - X2) == 1 | (X2 - X1) == 1) {
-                                        if (Y1 == BOTTOM_PAWN - 1) {
+                                    if (XL == 1 | XR == 1) {
+                                        if (Y2 == BOTTOM_PAWN + 1) {
                                             if (Target != 0) {
                                                 if (Target > 6) {
                                                     Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
@@ -358,7 +376,7 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                         return F;
                                     }
                                 } else {
-                                    if (Y2 == BOTTOM_PAWN - 1) {
+                                    if (Y2 == BOTTOM_PAWN + 1) {
                                         if (Target == 0) {
                                             Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                                             return T;
@@ -366,7 +384,7 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                             printf("BLACK pawn wants to stare front of something!\n");
                                             return F;
                                         }
-                                    } else if (Y2 == BOTTOM_PAWN - 2) {
+                                    } else if (Y2 == BOTTOM_PAWN + 2) {
                                         if (Target == 0 & Table[(Y2 * 8) + X2] == 0) {
                                             Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                                             return T;
@@ -381,11 +399,16 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                 }
                             } else {
                                 if (X2 != X1) {
-                                    if ((X1 - X2) == 1 | (X2 - X1) == 1) {
-                                        if ((Y1 - Y2) == 1) {
+                                    if (XL == 1 | XR == 1) {
+                                        if (YL == 1) {
                                             if (Target != 0) {
                                                 if (Target > 6) {
-                                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                                    if (Y2 == 0) {
+                                                        Table[(Y2 * 8) + X2] = BLACK_QUEEN;
+                                                        Table[(Y1 * 8) + X1] = 0;
+                                                    } else {
+                                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                                    } return T;
                                                     return T;
                                                 } else { system("clear");
                                                     printf("BLACK pawn is allergic to black things!\n");
@@ -404,10 +427,14 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                         return F;
                                     }
                                 } else {
-                                    if ((Y1 - Y2) == 1) {
+                                    if (YL == 1) {
                                         if (Target == 0) {
-                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                            return T;
+                                            if (Y2 == 0) {
+                                                Table[(Y2 * 8) + X2] = BLACK_QUEEN;
+                                                Table[(Y1 * 8) + X1] = 0;
+                                            } else {
+                                                Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                            } return T;
                                         } else { system("clear");
                                             printf("BLACK pawn wants to stare front of something!\n");
                                             return F;
@@ -421,8 +448,8 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                         } else {
                             if (Y1 == TOP_PAWN) {
                                 if (X2 != X1) {
-                                    if ((X1 - X2) == 1 | (X2 - X1) == 1) {
-                                        if (Y1 == TOP_PAWN + 1) {
+                                    if (XL == 1 | XR == 1) {
+                                        if (Y2 == TOP_PAWN + 1) {
                                             if (Target != 0) {
                                                 if (Target > 6) {
                                                     Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
@@ -467,11 +494,16 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                 } 
                             } else {
                                 if (X2 != X1) {
-                                    if ((X1 - X2) == 1 | (X2 - X1) == 1) {
-                                        if (Y1 == TOP_PAWN + 1) {
+                                    if (XL == 1 | XR == 1) {
+                                        if (YR == 1) {
                                             if (Target != 0) {
                                                 if (Target > 6) {
-                                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                                    if (Y2 == 7) {
+                                                        Table[(Y2 * 8) + X2] = BLACK_QUEEN;
+                                                        Table[(Y1 * 8) + X1] = 0;
+                                                    } else {
+                                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                                    } return T;
                                                     return T;
                                                 } else { system("clear");
                                                     printf("BLACK pawn is allergic to black things!\n");
@@ -487,9 +519,14 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                         return F;
                                     }
                                 } else {
-                                    if (Y2 == TOP_PAWN + 1) {
+                                    if (YR == 1) {
                                         if (Target == 0) {
-                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                            if (Y2 == 7) {
+                                                Table[(Y2 * 8) + X2] = BLACK_QUEEN;
+                                                Table[(Y1 * 8) + X1] = 0;
+                                            } else {
+                                                Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                            } return T;
                                             return T;
                                         } else { system("clear");
                                             printf("BLACK pawn wants to stare front of something!\n");
@@ -502,13 +539,15 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                 }
                             }
                         } break;
+                    } case (WHITE_KNIGHT): {
+                        if (XL == 1 | XR == 2) {
+
+                        }
                     } default: {
                         Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                         return T;
                     }
                 }
-                // Table[(Y2 * 8) + X2] = Table[(Y1 * 8) + X1];
-                // Table[(Y1 * 8) + X1] = 0;
             }
             return T;
         }
