@@ -556,16 +556,8 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                     }
                                 }
                             } else if (YR == 2) {
-                                if (Target == 0) {
-                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                } else {
-                                    if (Target > 6) { 
-                                        printf("WHITE knight is allergic to white things!\n");
-                                        return NO;
-                                    } else {
-                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                    }
-                                }
+                                Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+
                             } else { 
                                 printf("WHITE knight fell from the horse!\n");
                                 return NO;
@@ -579,16 +571,7 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                         printf("WHITE knight is allergic to white things!\n");
                                         return NO;
                                     } else {
-                                        if (Target == 0) {
-                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                        } else {
-                                            if (Target > 6) { 
-                                                printf("WHITE knight is allergic to white things!\n");
-                                                return NO;
-                                            } else {
-                                                Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                            }
-                                        }
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                                     }
                                 }
                             } else if (YR == 2) {
@@ -612,32 +595,14 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                     printf("WHITE knight is allergic to white things!\n");
                                     return NO;
                                 } else {
-                                    if (Target == 0) {
-                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                    } else {
-                                        if (Target > 6) { 
-                                            printf("WHITE knight is allergic to white things!\n");
-                                            return NO;
-                                        } else {
-                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                        }
-                                    }
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                                 }
                             } else if (YR == 2) {
                                 if (Target > 6) { 
                                     printf("WHITE knight is allergic to white things!\n");
                                     return NO;
                                 } else {
-                                    if (Target == 0) {
-                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                    } else {
-                                        if (Target > 6) { 
-                                            printf("WHITE knight is allergic to white things!\n");
-                                            return NO;
-                                        } else {
-                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                        }
-                                    }
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                                 }
                             } else { 
                                 printf("WHITE knight fell from the horse!\n");
@@ -649,32 +614,14 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                     printf("WHITE knight is allergic to white things!\n");
                                     return NO;
                                 } else {
-                                    if (Target == 0) {
-                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                    } else {
-                                        if (Target > 6) { 
-                                            printf("WHITE knight is allergic to white things!\n");
-                                            return NO;
-                                        } else {
-                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                        }
-                                    }
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                                 }
                             } else if (YR == 1) {
                                 if (Target > 6) { 
                                     printf("WHITE knight is allergic to white things!\n");
                                     return NO;
                                 } else {
-                                    if (Target == 0) {
-                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                    } else {
-                                        if (Target > 6) { 
-                                            printf("WHITE knight is allergic to white things!\n");
-                                            return NO;
-                                        } else {
-                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                        }
-                                    }
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                                 }
                             } else { 
                                 printf("WHITE knight fell from the horse!\n");
@@ -691,32 +638,14 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                     printf("BLACK knight is allergic to black things!\n");
                                     return NO;
                                 } else {
-                                    if (Target == 0) {
-                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                    } else {
-                                        if (Target < 7) { 
-                                            printf("BLACK knight is allergic to black things!\n");
-                                            return NO;
-                                        } else {
-                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                        }
-                                    }
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                                 }
                             } else if (YR == 2) {
                                 if (Target < 7 & Target != 0) { 
                                     printf("BLACK knight is allergic to black things!\n");
                                     return NO;
                                 } else {
-                                    if (Target == 0) {
-                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                    } else {
-                                        if (Target < 7) { 
-                                            printf("BLACK knight is allergic to black things!\n");
-                                            return NO;
-                                        } else {
-                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                        }
-                                    }
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                                 }
                             } else { 
                                 printf("BLACK knight fell from the horse!\n");
@@ -728,32 +657,14 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                     printf("BLACK knight is allergic to black things!\n");
                                     return NO;
                                 } else {
-                                    if (Target == 0) {
-                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                    } else {
-                                        if (Target < 7) { 
-                                            printf("BLACK knight is allergic to black things!\n");
-                                            return NO;
-                                        } else {
-                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                        }
-                                    }
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                                 }
                             } else if (YR == 2) {
                                 if (Target < 7 & Target != 0) { 
                                     printf("BLACK knight is allergic to black things!\n");
                                     return NO;
                                 } else {
-                                    if (Target == 0) {
-                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                    } else {
-                                        if (Target < 7) { 
-                                            printf("BLACK knight is allergic to black things!\n");
-                                            return NO;
-                                        } else {
-                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                        }
-                                    }
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                                 }
                             } else { 
                                 printf("BLACK knight fell from the horse!\n");
@@ -765,32 +676,14 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                     printf("BLACK knight is allergic to black things!\n");
                                     return NO;
                                 } else {
-                                    if (Target == 0) {
-                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                    } else {
-                                        if (Target < 7) { 
-                                            printf("BLACK knight is allergic to black things!\n");
-                                            return NO;
-                                        } else {
-                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                        }
-                                    }
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                                 }
                             } else if (YR == 2) {
                                 if (Target < 7 & Target != 0) { 
                                     printf("BLACK knight is allergic to black things!\n");
                                     return NO;
                                 } else {
-                                    if (Target == 0) {
-                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                    } else {
-                                        if (Target < 7) { 
-                                            printf("BLACK knight is allergic to black things!\n");
-                                            return NO;
-                                        } else {
-                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                        }
-                                    }
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                                 }
                             } else { 
                                 printf("BLACK knight fell from the horse!\n");
@@ -802,16 +695,7 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                     printf("BLACK knight is allergic to black things!\n");
                                     return NO;
                                 } else {
-                                    if (Target == 0) {
-                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                    } else {
-                                        if (Target < 7) { 
-                                            printf("BLACK knight is allergic to black things!\n");
-                                            return NO;
-                                        } else {
-                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
-                                        }
-                                    }
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                                 }
                             } else if (YR == 1) {
                                 if (Target < 7 & Target != 0) { 
@@ -835,6 +719,198 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                             }
                         } else { 
                             printf("BLACK knight fell from the horse!\n");
+                            return NO;
+                        } break;
+                    } case (WHITE_BISHOP): {
+                        if (XR > 0) {
+                            if (YL > 0) {
+                                for (UI X = X1 + 1, Y = Y1 - 1; Y > 0 & X < 8; X++, Y--) {
+                                    if (Table[(Y * 8) + X] != 0) {
+                                        if ((Y * 8) + X != (Y2 * 8) + X2) {
+                                            printf("WHITE bishop got jumpscared!\n");
+                                            return NO;
+                                        } else {
+                                            if (Target > 6) {
+                                                printf("WHITE bishop is allergic to white things!\n");
+                                                return NO;
+                                            } else {
+                                                Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                                return YES;
+                                            }
+                                        }
+                                    } else if ((Y * 8) + X == (Y2 * 8) + X2) {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        return YES;
+                                    }
+                                }
+                            } else if (YR > 0) {
+                                for (UI X = X1, Y = Y1; Y < 8 & X > 0; X--, Y++) {
+                                    if (Table[(Y * 8) + X] != 0) {
+                                        if ((Y * 8) + X != (Y2 * 8) + X2) {
+                                            printf("WHITE bishop got jumpscare!\n");
+                                            return NO;
+                                        } else {
+                                            if (Target > 6) {
+                                                printf("WHITE bishop is allergic to white things!\n");
+                                                return NO;
+                                            } else {
+                                                Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                                return YES;
+                                            }
+                                        }
+                                    } else if ((Y * 8) + X == (Y2 * 8) + X2) {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        return YES;
+                                    }
+                                }
+                            } else {
+                                printf("WHITE bishop got jumpscared!\n");
+                                return NO;
+                            }
+                        } else if (XL > 0) {
+                            if (YL > 0) {
+                                for (UI X = X1 + 1, Y = Y1 - 1; Y > 0 & X < 8; X++, Y--) {
+                                    printf("%i + %i: %i\n", X, Y, (Y * 8) + X);
+                                    if (Table[(Y * 8) + X] != 0) {
+                                        if ((Y * 8) + X != (Y2 * 8) + X2) {
+                                            printf("WHITE bishop got jumpscare!\n");
+                                            return NO;
+                                        } else {
+                                            if (Target > 6) {
+                                                printf("WHITE bishop is allergic to white things!\n");
+                                                return NO;
+                                            } else {
+                                                Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                                return YES;
+                                            }
+                                        }
+                                    } else if ((Y * 8) + X == (Y2 * 8) + X2) {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        return YES;
+                                    }
+                                }
+                            } else if (YR > 0) {
+                                for (UI X = X1, Y = Y1; Y < 8 & X < 8; X++, Y++) {
+                                    if (Table[(Y * 8) + X] != 0) {
+                                        if ((Y * 8) + X != (Y2 * 8) + X2) {
+                                            printf("WHITE bishop got jumpscare!\n");
+                                            return NO;
+                                        } else {
+                                            if (Target > 6) {
+                                                printf("WHITE bishop is allergic to white things!\n");
+                                                return NO;
+                                            } else {
+                                                Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                                return YES;
+                                            }
+                                        }
+                                    } else if ((Y * 8) + X == (Y2 * 8) + X2) {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        return YES;
+                                    }
+                                }
+                            } else {
+                                printf("WHITE bishop got jumpscare!\n");
+                                return NO;
+                            }
+                        } else {
+                            printf("WHITE bishop isn't a Queen!\n");
+                            return NO;
+                        } break;
+                    } case (BLACK_BISHOP): {
+                        if (XR > 0) {
+                            if (YL > 0) {
+                                for (UI X = X1 + 1, Y = Y1 - 1; Y > 0 & X < 8; X++, Y--) {
+                                    if (Table[(Y * 8) + X] != 0) {
+                                        if ((Y * 8) + X != (Y2 * 8) + X2) {
+                                            printf("BLACK bishop got jumpscared!\n");
+                                            return NO;
+                                        } else {
+                                            if (Target > 6) {
+                                                printf("BLACK bishop is allergic to black things!\n");
+                                                return NO;
+                                            } else {
+                                                Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                                return YES;
+                                            }
+                                        }
+                                    } else if ((Y * 8) + X == (Y2 * 8) + X2) {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        return YES;
+                                    }
+                                }
+                            } else if (YR > 0) {
+                                for (UI X = X1, Y = Y1; Y < 8 & X > 0; X--, Y++) {
+                                    if (Table[(Y * 8) + X] != 0) {
+                                        if ((Y * 8) + X != (Y2 * 8) + X2) {
+                                            printf("BLACK bishop got jumpscare!\n");
+                                            return NO;
+                                        } else {
+                                            if (Target > 6) {
+                                                printf("BLACK bishop is allergic to black things!\n");
+                                                return NO;
+                                            } else {
+                                                Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                                return YES;
+                                            }
+                                        }
+                                    } else if ((Y * 8) + X == (Y2 * 8) + X2) {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        return YES;
+                                    }
+                                }
+                            } else {
+                                printf("BLACK bishop got jumpscared!\n");
+                                return NO;
+                            }
+                        } else if (XL > 0) {
+                            if (YL > 0) {
+                                for (UI X = X1 + 1, Y = Y1 - 1; Y > 0 & X < 8; X++, Y--) {
+                                    printf("%i + %i: %i\n", X, Y, (Y * 8) + X);
+                                    if (Table[(Y * 8) + X] != 0) {
+                                        if ((Y * 8) + X != (Y2 * 8) + X2) {
+                                            printf("BLACK bishop got jumpscare!\n");
+                                            return NO;
+                                        } else {
+                                            if (Target > 6) {
+                                                printf("BLACK bishop is allergic to black things!\n");
+                                                return NO;
+                                            } else {
+                                                Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                                return YES;
+                                            }
+                                        }
+                                    } else if ((Y * 8) + X == (Y2 * 8) + X2) {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        return YES;
+                                    }
+                                }
+                            } else if (YR > 0) {
+                                for (UI X = X1, Y = Y1; Y < 8 & X < 8; X++, Y++) {
+                                    if (Table[(Y * 8) + X] != 0) {
+                                        if ((Y * 8) + X != (Y2 * 8) + X2) {
+                                            printf("BLACK bishop got jumpscare!\n");
+                                            return NO;
+                                        } else {
+                                            if (Target > 6) {
+                                                printf("BLACK bishop is allergic to black things!\n");
+                                                return NO;
+                                            } else {
+                                                Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                                return YES;
+                                            }
+                                        }
+                                    } else if ((Y * 8) + X == (Y2 * 8) + X2) {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        return YES;
+                                    }
+                                }
+                            } else {
+                                printf("BLACK bishop got jumpscare!\n");
+                                return NO;
+                            }
+                        } else {
+                            printf("BLACK bishop isn't a Queen!\n");
                             return NO;
                         } break;
                     } default: {
