@@ -998,6 +998,179 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                             printf("WHITE rook was the choosen one to stare!\n");
                             return NO;
                         } break;
+                    } case (BLACK_ROOK): {
+                        if (XR > 0) {
+                            for (UI X = X1 - 1; X > 0; X--) {
+                                if (Table[(Y1 * 8) + X] != 0) {
+                                    if (X != X2 | Y1 != Y2) {
+                                        printf("BLACK rook got jumpscare!\n");
+                                        return NO;
+                                    } else {
+                                        if (Target < 7) {
+                                            printf("BLACK rook is allergic to black things!\n");
+                                            return NO;
+                                        } else {
+                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                            return YES;
+                                        }
+                                    }
+                                } else if (X == X2) { if (Y1 == Y2) {
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    return YES;
+                                } }
+                            }
+                        } else if (YL > 0) {
+                            for (UI Y = Y1 - 1; Y > 0; Y--) {
+                                if (Table[(Y * 8) + X1] != 0) {
+                                    if (X1 != X2 | Y != Y2) {
+                                        printf("BLACK rook got jumpscare!\n");
+                                        return NO;
+                                    } else {
+                                        if (Target < 7) {
+                                            printf("BLACK rook is allergic to black things!\n");
+                                            return NO;
+                                        } else {
+                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                            return YES;
+                                        }
+                                    }
+                                } else if (Y == Y2) { if (X1 == X2) {
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    return YES;
+                                } }
+                            }
+                        } else if (XL > 0) {
+                            for (UI X = X1 + 1; X < 8; X++) {
+                                if (Table[(Y1 * 8) + X] != 0) {
+                                    if (X != X2 | Y1 != Y2) {
+                                        printf("BLACK rook got jumpscare!\n");
+                                        return NO;
+                                    } else {
+                                        if (Target < 7) {
+                                            printf("BLACK rook is allergic to black things!\n");
+                                            return NO;
+                                        } else {
+                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                            return YES;
+                                        }
+                                    }
+                                } else if (X == X2) { if (Y1 == Y2) {
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    return YES;
+                                } }
+                            }
+                        } else if (YR > 0) {
+                            for (UI Y = Y1 + 1; Y < 8; Y++) {
+                                if (Table[(Y * 8) + X1] != 0) {
+                                    if (X1 != X2 | Y != Y2) {
+                                        printf("BLACK rook got jumpscare!\n");
+                                        return NO;
+                                    } else {
+                                        if (Target < 7) {
+                                            printf("BLACK rook is allergic to black things!\n");
+                                            return NO;
+                                        } else {
+                                            Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                            return YES;
+                                        }
+                                    }
+                                } else if (Y == Y2) { if (X1 == X2) {
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    return YES;
+                                } }
+                            }
+                        } else {
+                            printf("BLACK rook was the choosen one to stare!\n");
+                            return NO;
+                        } break;
+                    } case (WHITE_QUEEN): {
+                        if (YL > 0) {
+                            if (XL > 0) {
+                                if (XL == 1) {
+                                    if (Target < 7) {
+                                        printf("WHITE queen is allergic to white things!\n");
+                                        return NO;
+                                    } else {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        return YES;
+                                    }
+                                }
+                            } else if (XR > 0) {
+
+                            } else {
+
+                            }
+                        } else if (YR > 0) {
+
+                        } else {
+                            printf("WHITE queen says \"WTH are you saying?\"!\n");
+                            return NO;
+                        }
+                    } case (WHITE_KING): {
+                        if (XL == 1) {
+                            if (YL == 1) {
+                                if (Target > 6) {
+                                    printf("WHITE king loves his white slaves!\n");
+                                    return NO;
+                                } else {
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    return YES;
+                                }
+                            } else if (YR == 1) {
+                                if (Target > 6) {
+                                    printf("WHITE king loves his white slaves!\n");
+                                    return NO;
+                                } else {
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    return YES;
+                                }
+                            } else {
+                                printf("WHITE king cannot run that fast!\n");
+                                return NO;
+                            }
+                        } else if (XR == 1) {
+                            if (YL == 1) {
+                                if (Target > 6) {
+                                    printf("WHITE king loves his white slaves!\n");
+                                    return NO;
+                                } else {
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    return YES;
+                                }
+                            } else if (YR == 1) {
+                                if (Target > 6) {
+                                    printf("WHITE king loves his white slaves!\n");
+                                    return NO;
+                                } else {
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    return YES;
+                                }
+                            } else {
+                                printf("WHITE king cannot run that fast!\n");
+                                return NO;
+                            }
+                        } else {
+                            if (YL == 1) {
+                                if (Target > 6) {
+                                    printf("WHITE king loves his white slaves!\n");
+                                    return NO;
+                                } else {
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    return YES;
+                                }
+                            } else if (YR == 1) {
+                                if (Target > 6) {
+                                    printf("WHITE king loves his white slaves!\n");
+                                    return NO;
+                                } else {
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    return YES;
+                                }
+                            } else {
+                                printf("WHITE king wants to win not stare!\n");
+                                return NO;
+                            }
+                        }
                     } default: {
                         Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                         return YES;
