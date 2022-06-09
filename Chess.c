@@ -742,7 +742,7 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                         Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                                         return YES;
                                     }
-                                }
+                                } printf("WHITE bishop doesn't know where to go!\n"); return NO;
                             } else if (YR > 0) {
                                 for (UI X = X1, Y = Y1; Y < 8 & X > 0; X--, Y++) {
                                     if (Table[(Y * 8) + X] != 0) {
@@ -766,7 +766,7 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                             } else {
                                 printf("WHITE bishop got jumpscare!\n");
                                 return NO;
-                            }
+                            } printf("WHITE bishop doesn't know where to go!\n"); return NO;
                         } else if (XL > 0) {
                             if (YL > 0) {
                                 for (UI X = X1 + 1, Y = Y1 - 1; Y > 0 & X < 8; X++, Y--) {
@@ -788,7 +788,7 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                         Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                                         return YES;
                                     }
-                                }
+                                } printf("WHITE bishop doesn't know where to go!\n"); return NO;
                             } else if (YR > 0) {
                                 for (UI X = X1, Y = Y1; Y < 8 & X < 8; X++, Y++) {
                                     if (Table[(Y * 8) + X] != 0) {
@@ -812,7 +812,7 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                             } else {
                                 printf("WHITE bishop got jumpscare!\n");
                                 return NO;
-                            }
+                            } printf("WHITE bishop doesn't know where to go!\n"); return NO;
                         } else {
                             printf("WHITE bishop isn't a Queen!\n");
                             return NO;
@@ -838,7 +838,7 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                         Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                                         return YES;
                                     }
-                                }
+                                } printf("BLACK bishop doesn't know where to go!\n"); return NO;
                             } else if (YR > 0) {
                                 for (UI X = X1, Y = Y1; Y < 8 & X > 0; X--, Y++) {
                                     if (Table[(Y * 8) + X] != 0) {
@@ -862,7 +862,7 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                             } else {
                                 printf("BLACK bishop got jumpscare!\n");
                                 return NO;
-                            }
+                            } printf("BLACK bishop doesn't know where to go!\n"); return NO;
                         } else if (XL > 0) {
                             if (YL > 0) {
                                 for (UI X = X1 + 1, Y = Y1 - 1; Y > 0 & X < 8; X++, Y--) {
@@ -884,7 +884,7 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                         Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                                         return YES;
                                     } }
-                                }
+                                } printf("BLACK bishop doesn't know where to go!\n"); return NO;
                             } else if (YR > 0) {
                                 for (UI X = X1, Y = Y1; Y < 8 & X < 8; X++, Y++) {
                                     if (Table[(Y * 8) + X] != 0) {
@@ -908,7 +908,7 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                             } else {
                                 printf("BLACK bishop got jumpscare!\n");
                                 return NO;
-                            }
+                            } printf("BLACK bishop doesn't know where to go!\n"); return NO;
                         } else {
                             printf("BLACK bishop isn't a Queen!\n");
                             return NO;
@@ -933,7 +933,7 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                     Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                                     return YES;
                                 } }
-                            }
+                            } printf("WHITE rook doesn't know where to go!\n"); return NO;
                         } else if (YL > 0) {
                             for (UI Y = Y1 - 1; Y > 0; Y--) {
                                 if (Table[(Y * 8) + X1] != 0) {
@@ -953,7 +953,7 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                     Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                                     return YES;
                                 } }
-                            }
+                            } printf("WHITE rook doesn't know where to go!\n"); return NO;
                         } else if (XL > 0) {
                             for (UI X = X1 + 1; X < 8; X++) {
                                 if (Table[(Y1 * 8) + X] != 0) {
@@ -973,7 +973,7 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                     Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                                     return YES;
                                 } }
-                            }
+                            } printf("WHITE rook doesn't know where to go!\n"); return NO;
                         } else if (YR > 0) {
                             for (UI Y = Y1 + 1; Y < 8; Y++) {
                                 if (Table[(Y * 8) + X1] != 0) {
@@ -993,7 +993,7 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                     Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                                     return YES;
                                 } }
-                            }
+                            } printf("WHITE rook doesn't know where to go!\n"); return NO;
                         } else {
                             printf("WHITE rook was the choosen one to stare!\n");
                             return NO;
@@ -1018,7 +1018,7 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                     Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                                     return YES;
                                 } }
-                            }
+                            } printf("BLACK rook doesn't know where to go!\n"); return NO;
                         } else if (YL > 0) {
                             for (UI Y = Y1 - 1; Y > 0; Y--) {
                                 if (Table[(Y * 8) + X1] != 0) {
@@ -1038,7 +1038,7 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                     Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                                     return YES;
                                 } }
-                            }
+                            } printf("BLACK rook doesn't know where to go!\n"); return NO;
                         } else if (XL > 0) {
                             for (UI X = X1 + 1; X < 8; X++) {
                                 if (Table[(Y1 * 8) + X] != 0) {
@@ -1058,7 +1058,7 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                     Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                                     return YES;
                                 } }
-                            }
+                            } printf("BLACK rook doesn't know where to go!\n"); return NO;
                         } else if (YR > 0) {
                             for (UI Y = Y1 + 1; Y < 8; Y++) {
                                 if (Table[(Y * 8) + X1] != 0) {
@@ -1078,7 +1078,7 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                     Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                                     return YES;
                                 } }
-                            }
+                            } printf("BLACK rook doesn't know where to go!\n"); return NO;
                         } else {
                             printf("BLACK rook was the choosen one to stare!\n");
                             return NO;
@@ -1086,26 +1086,175 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                     } case (WHITE_QUEEN): {
                         if (YL > 0) {
                             if (XL > 0) {
-                                if (XL == 1) {
-                                    if (Target < 7) {
-                                        printf("WHITE queen is allergic to white things!\n");
-                                        return NO;
-                                    } else {
+                                for (UI X = X1 + 1, Y = Y1 - 1; Y > 0 & X < 8; X++, Y--) {
+                                    if (Table[(Y * 8) + X] != 0) {
+                                        if (Y != Y2 | X != X2) {
+                                            printf("WHITE queen got jumpscare!\n");
+                                            return NO;
+                                        } else {
+                                            if (Target > 6) {
+                                                printf("WHITE queen is allergic to white things!\n");
+                                                return NO;
+                                            } else {
+                                                Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                                return YES;
+                                            }
+                                        }
+                                    } else if ((Y * 8) + X == (Y2 * 8) + X2) {
                                         Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                                         return YES;
                                     }
-                                }
+                                } printf("WHITE queen doesn't know where she is going!\n"); return NO;
                             } else if (XR > 0) {
-
+                                for (UI X = X1 - 1, Y = Y1 - 1; Y > 0 & X > 0; X--, Y--) {
+                                    if (Table[(Y * 8) + X] != 0) {
+                                        if (Y != Y2 | X != X2) {
+                                            printf("WHITE queen got jumpscare!\n");
+                                            return NO;
+                                        } else {
+                                            if (Target > 6) {
+                                                printf("WHITE queen is allergic to white things!\n");
+                                                return NO;
+                                            } else {
+                                                Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                                return YES;
+                                            }
+                                        }
+                                    } else if ((Y * 8) + X == (Y2 * 8) + X2) {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        return YES;
+                                    }
+                                } printf("WHITE queen doesn't know where she is going!\n"); return NO;
                             } else {
-
+                                for (UI Y = Y1 - 1; Y > 0; Y--) {
+                                    if (Table[(Y * 8) + X1] != 0) {
+                                        if (X1 != X2 | Y != Y2) {
+                                            printf("WHITE queen got jumpscare!\n");
+                                            return NO;
+                                        } else {
+                                            if (Target > 6) {
+                                                printf("WHITE queen is allergic to white things!\n");
+                                                return NO;
+                                            } else {
+                                                Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                                return YES;
+                                            }
+                                        }
+                                    } else if (Y == Y2) { if (X1 == X2) {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        return YES;
+                                    } }
+                                } printf("WHITE queen doesn't know where she is going!\n"); return NO;
                             }
                         } else if (YR > 0) {
+                            if (XL > 0) {
+                                for (UI X = X1, Y = Y1; Y < 8 & X > 0; X--, Y++) {
+                                    if (Table[(Y * 8) + X] != 0) {
+                                        if (Y != Y2 | X != X2) {
+                                            printf("WHITE queen got jumpscare!\n");
+                                            return NO;
+                                        } else {
+                                            if (Target > 6) {
+                                                printf("WHITE queen is allergic to white things!\n");
+                                                return NO;
+                                            } else {
+                                                Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                                return YES;
+                                            }
+                                        }
 
+                                    } else if ((Y * 8) + X == (Y2 * 8) + X2) {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        return YES;
+                                    }
+                                } printf("WHITE queen doesn't know where she is going!\n"); return NO;
+                            } else if (XR > 0) {
+                                for (UI X = X1, Y = Y1; Y < 8 & X < 8; X++, Y++) {
+                                    if (Table[(Y * 8) + X] != 0) {
+                                        if (Y != Y2 | X != X2) {
+                                            printf("WHITE queen got jumpscare!\n");
+                                            return NO;
+                                        } else {
+                                            if (Target > 6) {
+                                                printf("WHITE queen is allergic to white things!\n");
+                                                return NO;
+                                            } else {
+                                                Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                                return YES;
+                                            }
+                                        }
+                                    } else if ((Y * 8) + X == (Y2 * 8) + X2) {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        return YES;
+                                    }
+                                } printf("WHITE queen doesn't know where she is going!\n"); return NO;
+                            } else {
+                                for (UI Y = Y1 + 1; Y < 8; Y++) {
+                                    if (Table[(Y * 8) + X1] != 0) {
+                                        if (X1 != X2 | Y != Y2) {
+                                            printf("WHITE queen got jumpscare!\n");
+                                            return NO;
+                                        } else {
+                                            if (Target > 6) {
+                                                printf("WHITE queen is allergic to white things!\n");
+                                                return NO;
+                                            } else {
+                                                Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                                return YES;
+                                            }
+                                        }
+                                    } else if (Y == Y2) { if (X1 == X2) {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        return YES;
+                                    } }
+                                } printf("WHITE queen doesn't know where she is going!\n"); return NO;
+                            }
                         } else {
-                            printf("WHITE queen says \"WTH are you saying?\"!\n");
-                            return NO;
-                        }
+                            if (XL > 0) {
+                                for (UI X = X1 + 1; X < 8; X++) {
+                                    if (Table[(Y1 * 8) + X] != 0) {
+                                        if (X != X2 | Y1 != Y2) {
+                                            printf("WHITE queen got jumpscare!\n");
+                                            return NO;
+                                        } else {
+                                            if (Target > 6) {
+                                                printf("WHITE queen is allergic to white things!\n");
+                                                return NO;
+                                            } else {
+                                                Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                                return YES;
+                                            }
+                                        }
+                                    } else if (X == X2) { if (Y1 == Y2) {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        return YES;
+                                    } }
+                                } printf("WHITE queen doesn't know where she is going!\n"); return NO;
+                            } else if (XR > 0) {
+                                for (UI X = X1, Y = Y1; Y < 8 & X < 8; X++, Y++) {
+                                    if (Table[(Y * 8) + X] != 0) {
+                                        if (Y != Y2 | X != X2) {
+                                            printf("WHITE queen got jumpscare!\n");
+                                            return NO;
+                                        } else {
+                                            if (Target > 6) {
+                                                printf("WHITE queen is allergic to white things!\n");
+                                                return NO;
+                                            } else {
+                                                Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                                return YES;
+                                            }
+                                        }
+                                    } else if ((Y * 8) + X == (Y2 * 8) + X2) {
+                                        Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                        return YES;
+                                    }
+                                } printf("WHITE queen doesn't know where she is going!\n"); return NO;
+                            } else {
+                                printf("WHITE queen says \"WTH are you saying?\"!\n");
+                                return NO;
+                            }
+                        } break;
                     } case (WHITE_KING): {
                         if (XL == 1) {
                             if (YL == 1) {
@@ -1170,7 +1319,72 @@ B Move(C *Pikachu, TEAM Team, TEAM BTeam) {
                                 printf("WHITE king wants to win not stare!\n");
                                 return NO;
                             }
-                        }
+                        } break;
+                    } case (BLACK_KING): {
+                        if (XL == 1) {
+                            if (YL == 1) {
+                                if (Target < 7 & Target != 0) {
+                                    printf("BLACK king loves his black slaves!\n");
+                                    return NO;
+                                } else {
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    return YES;
+                                }
+                            } else if (YR == 1) {
+                                if (Target < 7 & Target != 0) {
+                                    printf("BLACK king loves his black slaves!\n");
+                                    return NO;
+                                } else {
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    return YES;
+                                }
+                            } else {
+                                Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    return YES;
+                            }
+                        } else if (XR == 1) {
+                            if (YL == 1) {
+                                if (Target < 7 & Target != 0) {
+                                    printf("BLACK king loves his black slaves!\n");
+                                    return NO;
+                                } else {
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    return YES;
+                                }
+                            } else if (YR == 1) {
+                                if (Target < 7 & Target != 0) {
+                                    printf("BLACK king loves his black slaves!\n");
+                                    return NO;
+                                } else {
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    return YES;
+                                }
+                            } else {
+                                Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                return YES;
+                            }
+                        } else {
+                            if (YL == 1) {
+                                if (Target < 7 & Target != 0) {
+                                    printf("BLACK king loves his black slaves!\n");
+                                    return NO;
+                                } else {
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    return YES;
+                                }
+                            } else if (YR == 1) {
+                                if (Target < 7 & Target != 0) {
+                                    printf("BLACK king loves his BLACK slaves!\n");
+                                    return NO;
+                                } else {
+                                    Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
+                                    return YES;
+                                }
+                            } else {
+                                printf("BLACK king cannot run that fast!\n");
+                                return NO;
+                            }
+                        } break;
                     } default: {
                         Escape((Y2 * 8) + X2, (Y1 * 8) + X1);
                         return YES;
